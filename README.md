@@ -1,60 +1,85 @@
-# Frontend Mentor - REST Countries API with color theme switcher solution
+# Task Management (full-stack web-app )
 
-This is a solution to the [REST Countries API with color theme switcher challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
+## Content
 
-## Table of contents
+- [App Features](#app_features)
+- [Technologies will use](#Technologies_will_use)
+- [Screenshots](#screenshots)
+- [Styles](#styles)
 
-- [Overview](#overview)
-  - [The challenge](#the-challenge)
-  - [Links](#links)
-- [My process](#my-process)
-  - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-- [Author](#author)
+# **App Features**
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
+- User can sign-up
+- User can make Tasks (can have subtasks) and Boards .
+- User can track tasks status (Done,Doing ..etc).
+- User can drag and drop tasks between boards
+- Dark theme
 
-## Overview
+# **Technologies will use**
 
-### The challenge
+- Frontend
 
-Users should be able to:
+  - React
+  - Tailwind
+  - CREATE_REACT_APP
+  - _NextJS (maybe)_
 
-- See all countries from the API on the homepage
-- Search for a country using an `input` field
-- Filter countries by region
-- Click on a country to see more detailed information on a separate page
-- Click through to the border countries on the detail page
-- Toggle the color scheme between light and dark mode _(optional)_
+- Backend
 
-### Links
+  - Nodejs
+  - Express
+  - mongodb
 
-- Solution URL: (https://github.com/KhaledSobhy10/REST-Countries-API-with-color-theme-switcher)
-- Live Site URL:(https://gorgeous-alpaca-9ec8f1.netlify.app/)
+# Screenshots
 
-## My process
+### Preview
 
-### Built with
+![add new task](preview.jpg)
 
-- Semantic HTML5 markup
-- Flexbox
-- CSS Grid
-- Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [TailwindCSS](https://tailwindcss.com/) - utility css library
-- [Vite](https://vitejs.dev/) - build tools faster than create-react-app
+### Add new task
 
-### What I learned
+![add new task](add-task.jpg)
 
-- How to use vite
-- How to Customizing your theme tailwind
+### view task
 
-### Continued development
+![view  task](view-task.jpg)
 
-In future maybe will clean the code
+### Mobile Preview
 
-## Author
+![Mobile Preview](mobile-preview.jpg)
 
-- Frontend Mentor - [@Khaled_Sobhy](https://www.frontendmentor.io/profile/KhaledSobhy10)
-- LinkedIn - [@Khaled_Sobhy](https://www.linkedin.com/in/khaled-sobhy-51811a220/)
+### Tablet Preview
+
+![Tablet Preview](tablet-preview.jpg)
+
+# Styles
+
+## Light theme
+
+- ### Main background color : #f0f0f0
+
+- ### Secondary background color : white
+
+  - Modals
+  - Cards
+  - Action bar (header)
+  - Side bar
+
+- ### Primary text : black
+- ### Secondary text : #7c8492
+- ### Buttons color : #6166ca
+
+## Dark theme
+
+- ### Main background color : #1b1c29
+
+- ### Secondary background color : #272835
+
+  - Modals
+  - Cards
+  - Action bar (header)
+  - Side bar
+
+- ### Primary text : white
+- ### Secondary text : #7c8492
+- ### Buttons color : #6166ca
