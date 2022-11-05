@@ -1,0 +1,373 @@
+{
+    "programming": {
+        "tasks": [
+            {
+                "title": "upload app0",
+                "description": "upload app to github",
+                "status": "todo",
+                "subTasks": [
+                    {
+                        "title": "commit",
+                        "status": "todo"
+                    },
+                    {
+                        "title": "push",
+                        "status": "todo"
+                    }
+                ]
+            },
+            {
+                "title": "upload app1",
+                "description": "upload app to github",
+                "status": "todo",
+                "subTasks": [
+                    {
+                        "title": "commit",
+                        "status": "todo"
+                    },
+                    {
+                        "title": "push",
+                        "status": "todo"
+                    }
+                ]
+            },
+            {
+                "title": "upload app2",
+                "description": "upload app to github",
+                "status": "todo",
+                "subTasks": [
+                    {
+                        "title": "commit",
+                        "status": "todo"
+                    },
+                    {
+                        "title": "push",
+                        "status": "todo"
+                    }
+                ]
+            },
+            {
+                "title": "upload app3",
+                "description": "upload app to github",
+                "status": "todo",
+                "subTasks": [
+                    {
+                        "title": "commit",
+                        "status": "todo"
+                    },
+                    {
+                        "title": "push",
+                        "status": "todo"
+                    }
+                ]
+            },
+            {
+                "title": "upload app4",
+                "description": "upload app to github",
+                "status": "todo",
+                "subTasks": [
+                    {
+                        "title": "commit",
+                        "status": "todo"
+                    },
+                    {
+                        "title": "push",
+                        "status": "todo"
+                    }
+                ]
+            },
+            {
+                "title": "build app",
+                "description": "build the app and deploy",
+                "status": "doing",
+                "subTasks": [
+                    {
+                        "title": "make app",
+                        "status": "todo"
+                    },
+                    {
+                        "title": "get design",
+                        "status": "done"
+                    }
+                ]
+            },
+            {
+                "title": "update app",
+                "description": "update footer of app",
+                "status": "doing",
+                "subTasks": [
+                    {
+                        "title": "clone app",
+                        "status": "done"
+                    },
+                    {
+                        "title": "change footer",
+                        "status": "todo"
+                    }
+                ]
+            },
+            {
+                "title": "make app",
+                "description": "Make react app",
+                "status": "done",
+                "subTasks": [
+                    {
+                        "title": "make app",
+                        "status": "done"
+                    }
+                ]
+            },
+            {
+                "title": "Shopping",
+                "description": "Buying some clothes",
+                "status": "waiting",
+                "subTasks": [
+                    {
+                        "title": "Buy blalbla",
+                        "status": "waiting"
+                    }
+                ]
+            }
+        ]
+    },
+    "studying": {
+        "tasks": [
+            {
+                "title": "Read Nodejs & express book",
+                "description": "Read Nodejs & express book +10 pages after work",
+                "status": "todo"
+            },
+            {
+                "title": "Watching 5 videos of ML Course",
+                "description": "Watching 5 videos of ML Course from coursera https://coursera.com",
+                "status": "todo",
+                "subTasks": [
+                    {
+                        "title": "watch v1",
+                        "status": "todo"
+                    },
+                    {
+                        "title": "watch v2",
+                        "status": "todo"
+                    },
+                    {
+                        "title": "watch v3",
+                        "status": "todo"
+                    },
+                    {
+                        "title": "watch v4",
+                        "status": "todo"
+                    },
+                    {
+                        "title": "watch v5",
+                        "status": "todo"
+                    }
+                ]
+            },
+            {
+                "title": "Watching 2 videos of Express Course",
+                "description": "Watching 2 videos of Express Course from udemy https://udemy.com",
+                "status": "done",
+                "subTasks": [
+                    {
+                        "title": "watch v1",
+                        "status": "done"
+                    },
+                    {
+                        "title": "watch v2",
+                        "status": "done"
+                    }
+                ]
+            }
+        ]
+    },
+    "exercise": {
+        "tasks": [
+            {
+                "title": "UpperBody",
+                "description": "Work out upper body",
+                "status": "todo"
+            }
+        ]
+    },
+    "programming2": {
+        "tasks": [
+            {
+                "title": "upload app02",
+                "description": "upload app to github",
+                "status": "todo",
+                "subTasks": [
+                    {
+                        "title": "commit",
+                        "status": "todo"
+                    },
+                    {
+                        "title": "push",
+                        "status": "todo"
+                    }
+                ]
+            },
+            {
+                "title": "upload app12",
+                "description": "upload app to github",
+                "status": "todo",
+                "subTasks": [
+                    {
+                        "title": "commit",
+                        "status": "todo"
+                    },
+                    {
+                        "title": "push",
+                        "status": "todo"
+                    }
+                ]
+            },
+            {
+                "title": "upload app22",
+                "description": "upload app to github",
+                "status": "todo",
+                "subTasks": [
+                    {
+                        "title": "commit",
+                        "status": "todo"
+                    },
+                    {
+                        "title": "push",
+                        "status": "todo"
+                    }
+                ]
+            },
+            {
+                "title": "upload app32",
+                "description": "upload app to github",
+                "status": "todo",
+                "subTasks": [
+                    {
+                        "title": "commit",
+                        "status": "todo"
+                    },
+                    {
+                        "title": "push",
+                        "status": "todo"
+                    }
+                ]
+            },
+            {
+                "title": "upload app42",
+                "description": "upload app to github",
+                "status": "todo",
+                "subTasks": [
+                    {
+                        "title": "commit",
+                        "status": "todo"
+                    },
+                    {
+                        "title": "push",
+                        "status": "todo"
+                    }
+                ]
+            },
+            {
+                "title": "build app2",
+                "description": "build the app and deploy",
+                "status": "doing",
+                "subTasks": [
+                    {
+                        "title": "make app",
+                        "status": "todo"
+                    },
+                    {
+                        "title": "get design",
+                        "status": "done"
+                    }
+                ]
+            },
+            {
+                "title": "update app2",
+                "description": "update footer of app",
+                "status": "doing",
+                "subTasks": [
+                    {
+                        "title": "clone app",
+                        "status": "done"
+                    },
+                    {
+                        "title": "change footer",
+                        "status": "todo"
+                    }
+                ]
+            },
+            {
+                "title": "make app2",
+                "description": "Make react app",
+                "status": "done",
+                "subTasks": [
+                    {
+                        "title": "make app",
+                        "status": "done"
+                    }
+                ]
+            }
+        ]
+    },
+    "studying2": {
+        "tasks": [
+            {
+                "title": "Read Nodejs & express book2",
+                "description": "Read Nodejs & express book +10 pages after work",
+                "status": "todo"
+            },
+            {
+                "title": "Watching 5 videos of ML Course2",
+                "description": "Watching 5 videos of ML Course from coursera https://coursera.com",
+                "status": "todo",
+                "subTasks": [
+                    {
+                        "title": "watch v1",
+                        "status": "todo"
+                    },
+                    {
+                        "title": "watch v2",
+                        "status": "todo"
+                    },
+                    {
+                        "title": "watch v3",
+                        "status": "todo"
+                    },
+                    {
+                        "title": "watch v4",
+                        "status": "todo"
+                    },
+                    {
+                        "title": "watch v5",
+                        "status": "todo"
+                    }
+                ]
+            },
+            {
+                "title": "Watching 2 videos of Express Course2",
+                "description": "Watching 2 videos of Express Course from udemy https://udemy.com",
+                "status": "done",
+                "subTasks": [
+                    {
+                        "title": "watch v1",
+                        "status": "done"
+                    },
+                    {
+                        "title": "watch v2",
+                        "status": "done"
+                    }
+                ]
+            }
+        ]
+    },
+    "exercise2": {
+        "tasks": [
+            {
+                "title": "UpperBody",
+                "description": "Work out upper body",
+                "status": "todo"
+            }
+        ]
+    }
+}
