@@ -10,41 +10,47 @@ import BoardsContextProvider from "./context/BoardsContext";
 function App() {
   const [currentBoardName, setCurrentBoardName] = useState();
   const [showSideBar, setShowSideBar] = useState(false);
-
+  useEffect(() => {
+    document.documentElement.classList.add("dark");
+  }, []);
   return (
     <BrowserRouter>
       <BoardsContextProvider>
-        <div className="relative w-screen  bg-white dark:bg-[#1b1c29] transition-colors  duration-300 ">
+        <div className="relative  w-screen  bg-white dark:bg-[#1b1c29] transition-colors  duration-300 ">
           <ActionBar
             boardName={currentBoardName}
             showSideBarHandler={setShowSideBar}
           />
-          <SideBar
-            showBar={showSideBar}
-            showSideBarHandler={setShowSideBar}
-            currentBoardName={currentBoardName}
-          />
-          <div>
-            <Routes>
-              <Route
-                path="/"
-                element={
-                  <Home
-                    showSideBarHandler={setShowSideBar}
-                    setCurrentBoardName={setCurrentBoardName}
-                  />
-                }
-              ></Route>
-              <Route
-                path="/boards/:boardName"
-                element={
-                  <Boards
-                    currentBoardNameHandler={setCurrentBoardName}
-                    showSideBarHandler={setShowSideBar}
-                  />
-                }
-              ></Route>
-            </Routes>
+          <div className="flex w-full overflow-hidden">
+            <SideBar
+              showBar={showSideBar}
+              showSideBarHandler={setShowSideBar}
+              currentBoardName={currentBoardName}
+            />
+            <div>
+              <Routes>
+                <Route
+                  path="/"
+                  element={
+                    <Home
+                      showSideBarHandler={setShowSideBar}
+                      setCurrentBoardName={setCurrentBoardName}
+                      showSideBar={showSideBar}
+                    />
+                  }
+                ></Route>
+                <Route
+                  path="/boards/:boardName"
+                  element={
+                    <Boards
+                      currentBoardNameHandler={setCurrentBoardName}
+                      showSideBarHandler={setShowSideBar}
+                      showSideBar={showSideBar}
+                    />
+                  }
+                ></Route>
+              </Routes>
+            </div>
           </div>
         </div>
       </BoardsContextProvider>

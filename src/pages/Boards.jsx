@@ -4,7 +4,7 @@ import { Navigate, useParams } from "react-router-dom";
 import BoardContainer from "../components/BoardContainer";
 import { BoardsContext } from "../context/BoardsContext";
 
-function Boards({ currentBoardNameHandler, showSideBarHandler }) {
+function Boards({ currentBoardNameHandler, showSideBarHandler, showSideBar }) {
   const { boards } = useContext(BoardsContext);
   const { boardName } = useParams();
   const [board, setBoard] = useState(
@@ -16,9 +16,13 @@ function Boards({ currentBoardNameHandler, showSideBarHandler }) {
   }, [boardName, boards]);
   return (
     <main className="h-[calc(100vh-50px)]">
-      {(board && <BoardContainer boardTasks={board.columns} />) || (
-        <Navigate to="/" />
-      )}
+      {(board && (
+        <BoardContainer
+          boardTasks={board.columns}
+          boardId={board.id}
+          showSideBar={showSideBar}
+        />
+      )) || <Navigate to="/" />}
     </main>
   );
 }

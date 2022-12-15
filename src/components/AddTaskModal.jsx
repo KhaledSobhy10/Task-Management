@@ -58,6 +58,7 @@ export function AddTaskModal({ boardName, setShowAddTaskModal }) {
       const tasksList = currentBoard.columns.find(
         (column) => column.status === status
       )?.tasks;
+      task.order = tasksList.length;
       tasksList.push(task);
       updateBoard(currentBoard);
       return boardsHelper;

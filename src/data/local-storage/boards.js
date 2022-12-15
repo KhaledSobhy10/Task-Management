@@ -31,3 +31,18 @@ export const updateBoard = (board) => {
 
 export const getBoard = (boardId) =>
   getBoards().find((item) => item.id === boardId);
+
+export const updateTasksOfColumnInBoard = (
+  boardId,
+  columnIndexInBoard,
+  tasks
+) => {
+  const board = getBoard(boardId);
+
+  if (board && board.columns[columnIndexInBoard])
+    board.columns[columnIndexInBoard].tasks = tasks;
+  else {
+    throw new Error("No board or column  found !!");
+  }
+  updateBoard(board);
+};

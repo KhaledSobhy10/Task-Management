@@ -9,19 +9,21 @@ function SideBar({ currentBoardName, showBar, showSideBarHandler }) {
   const boardsTitle = boards.map((board) => board.title);
 
   const [showAddBoardModal, setShowAddBoardModal] = useState(false);
-
+  // absolute top-[50px] left-0 w-full
   return (
     <div
       className={`${
-        showBar ? "border-r-2" : "hidden"
-      } absolute top-[50px] left-0 h-[calc(100%-50px)] w-full  z-40 bg-black/30`}
-      onClick={() => {
-        showSideBarHandler(false);
-        setShowAddBoardModal(false);
+        showBar ? "" : "hidden"
+      }  h-[calc(100%-50px)]  w-fit  bg-black/30 border-r-2 dark:border-r-0`}
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+          showSideBarHandler(false);
+          setShowAddBoardModal(false);
+        }
       }}
     >
       <aside
-        className={`h-[calc(100vh-50px)] z-10  p-2 w-fit transition-colors duration-300  dark:border-gray-700 bg-white dark:bg-[#272835] dark:text-white text-black flex flex-col  items-start gap-2`}
+        className={`h-[calc(100vh-50px)] z-10  p-2 w-[330px] transition-colors duration-300  dark:border-gray-700 bg-white dark:bg-[#272835] dark:text-white text-black flex flex-col  items-start gap-2`}
       >
         <div className="px-4 text-gray-500 text-sm">{`ALL BOARDS (${boardsTitle.length})`}</div>
         <div className="flex flex-col gap-2 w-full items-start grow overflow-y-auto">
