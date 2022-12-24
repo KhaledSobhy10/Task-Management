@@ -1,5 +1,4 @@
-import React, { useState, useMemo, useContext } from "react";
-import { getStatusOptions } from "../utility/mapping";
+import { useState, useMemo, useContext } from "react";
 import SubTasksContainer from "./SubTasksContainer";
 import { BoardsContext } from "../context/BoardsContext";
 import { useParams } from "react-router-dom";
