@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import AddTaskModal from "./AddTaskModal";
 import DropdownMenu from "./DropdowMenu";
 import { removeBoardByTitle } from "../data/local-storage/boards";
@@ -9,15 +9,25 @@ function ActionBar({ boardName, addNewTaskHandler, showSideBarHandler }) {
 
   const deleteBoard = () => {
     setBoards(removeBoardByTitle(boardName));
-    console.log("Delete");
     reloadBoards();
   };
-  const updateBoard = () => {};
-  const optionsActions = { update: updateBoard, delete: deleteBoard };
-
-  const optionSelectedHandler = (value) => {
-    optionsActions[value.toLowerCase()]();
+  const updateBoard = () => {
+    console.log("update");
   };
+
+  const OPTIONS = [
+    {
+      title: "Update",
+      extraStyle: " text-blue-700 ",
+      selectedHandler: updateBoard,
+    },
+    {
+      title: "Delete",
+      extraStyle: " text-pink-700 ",
+      selectedHandler: deleteBoard,
+    },
+  ];
+
   return (
     <div className="transition-colors  duration-300 min-w-fit w-full h-[50px]  sm:px-4 px-2 py-2 bg-white dark:bg-[#272835] dark:text-white text-black flex gap-4 items-center shadow">
       <>
@@ -54,10 +64,7 @@ function ActionBar({ boardName, addNewTaskHandler, showSideBarHandler }) {
           >
             +Add New Task
           </button>
-          <DropdownMenu
-            options={["Update", "Delete"]}
-            optionSelectedHandler={optionSelectedHandler}
-          />
+          <DropdownMenu options={OPTIONS} />
           {showAddTaskModal && (
             <div
               className={`absolute top-0 left-0 h-full w-full  flex justify-center items-center z-40 bg-black/75`}

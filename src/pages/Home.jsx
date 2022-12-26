@@ -1,6 +1,4 @@
-import React, { useEffect } from "react";
-import Statistics from "../components/Statistics";
-import StatisticActionBar from "../components/StatisticActionBar";
+import { useEffect } from "react";
 
 function Home({ showSideBarHandler, setCurrentBoardName, showSideBar }) {
   useEffect(() => {

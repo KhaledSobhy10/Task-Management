@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-
 function ModalContainer({ children, setShoModal }) {
   return (
     <div

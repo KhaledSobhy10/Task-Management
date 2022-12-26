@@ -3,6 +3,8 @@ import SubTasksContainer from "./SubTasksContainer";
 import { BoardsContext } from "../context/BoardsContext";
 import { useParams } from "react-router-dom";
 import { updateBoard } from "../data/local-storage/boards";
+import DropdownMenu from "./DropdowMenu";
+import ConfirmModal from "./ConfirmModal";
 function TaskDetailsModal({
   title,
   description,
@@ -15,6 +17,9 @@ function TaskDetailsModal({
   const { boardName } = useParams();
   const { boards, setBoards } = useContext(BoardsContext);
   const [currentStatus, setCurrentStatus] = useState(status);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [showUpdateModal, setShowUpdateModal] = useState(false);
+
   const boardColumnsTitles = useMemo(() => {
     const currentBoard = boards.find((board) => board.title === boardName);
     return currentBoard?.columns.map(({ status }) => status);
@@ -39,6 +44,40 @@ function TaskDetailsModal({
     });
     setCurrentStatus(e.target.value);
   };
+
+  const deleteTask = (e) => {
+    setBoards((boards) => {
+      // change task from column to another column
+      const boardsHelper = [...boards];
+      const currentBoard = boardsHelper.find(
+        (board) => board.title === boardName
+      );
+      // delete task from  list(column)
+      const currentTaskList = currentBoard.columns[listIndex].tasks;
+      currentTaskList.splice(taskIndex, 1);
+      updateBoard(currentBoard);
+      return boardsHelper;
+    });
+  };
+
+  const deleteTaskHandler = () => {
+    setShowConfirmModal(true);
+  };
+  const updateTaskHandler = () => {
+    setShowUpdateModal(true);
+  };
+  const OPTIONS = [
+    {
+      title: "Update",
+      extraStyle: " text-blue-700 ",
+      selectedHandler: updateTaskHandler,
+    },
+    {
+      title: "Delete",
+      extraStyle: " text-pink-700 ",
+      selectedHandler: deleteTaskHandler,
+    },
+  ];
   return (
     <div
       className={`absolute top-0 left-0 h-full w-full  flex justify-center items-center z-40 bg-black/75`}
@@ -47,19 +86,22 @@ function TaskDetailsModal({
       {/* Modal Content */}
       <div className="md:w-1/3  w-[90%] min-h-fit max-h-full sm:p-6 p-2 bg-white shadow dark:bg-[#272835] z-50 flex flex-col gap-4 rounded-lg">
         {/* Head */}
+        {showConfirmModal && (
+          <ConfirmModal
+            message="Want delete a task ?"
+            hideModalHandler={setShowConfirmModal}
+            confirmedResponseHandler={deleteTask}
+            unconfirmedResponseHandler={() => {
+              console.log("cancel");
+            }}
+          />
+        )}
+
         <div className="flex justify-between">
           <strong className="dark:text-white text-xl break-words">
             {title}
           </strong>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="dark:fill-white w-4"
-            viewBox="0 0 512 512"
-          >
-            <circle cx="256" cy="256" r="48"></circle>
-            <circle cx="256" cy="416" r="48"></circle>
-            <circle cx="256" cy="96" r="48"></circle>
-          </svg>
+          <DropdownMenu options={OPTIONS} />
         </div>
         {/* Body */}
         <p className="text-sm break-words">
