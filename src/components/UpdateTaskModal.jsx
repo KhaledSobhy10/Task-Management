@@ -1,29 +1,75 @@
-import React, { useState, useContext, useMemo } from "react";
+import { useContext, useMemo, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { BoardsContext } from "../context/BoardsContext";
 import { updateBoard } from "../data/local-storage/boards";
 import { motion } from "framer-motion";
-
-export function AddTaskModal({ boardName, setShowAddTaskModal }) {
+function UpdateTaskModal({
+  task,
+  boardName,
+  setShowUpdateTaskModal,
+  taskIndex,
+  listIndex,
+}) {
   const { boards, setBoards } = useContext(BoardsContext);
+
+  const [title, setTitle] = useState(task.title);
+  const [description, setDescription] = useState(task.description);
+  const [status, setStatus] = useState(task.status);
+  const [subTasksInput, setSubTasksInput] = useState(task.subTasks);
   const boardColumnsTitles = useMemo(() => {
     const currentBoard = boards.find((board) => board.title === boardName);
     return currentBoard?.columns.map(({ status }) => status);
   }, [boardName]);
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [status, setStatus] = useState(boardColumnsTitles[0]);
-  const [subTasksInput, setSubTasksInput] = useState([
-    { subTask: "", isDone: false, id: uuidv4() },
-  ]);
 
-  const addSubTaskHandler = () => {
-    setSubTasksInput((prev) => [
-      ...prev,
-      { id: uuidv4(), subTask: "", isDone: false },
-    ]);
+  const onSubmitHandler = () => {
+    const updatedtask = {
+      id: task.id,
+      title,
+      description,
+      status,
+      subTasks: subTasksInput.filter(({ subTask }) => subTask.trim() !== ""),
+    };
+    console.log(
+      "🚀 ~ file: UpdateTaskModal.jsx:32 ~ onSubmitHandler ~ updatedtask",
+      updatedtask
+    );
+
+    setBoards((prev) => {
+      const boardsHelper = [...prev];
+      const currentBoard = boardsHelper.find(
+        (board) => board.title === boardName
+      );
+
+      if (task.status === updatedtask.status) {
+        const currentColumn = currentBoard.columns.find(
+          (column) => column.status === status
+        );
+        const newTaskList = currentColumn.tasks.map((taskItem) =>
+          taskItem.id === updatedtask.id ? updatedtask : taskItem
+        );
+        console.log(
+          "🚀 ~ file: UpdateTaskModal.jsx:50 ~ setBoards ~ newTaskList",
+          newTaskList
+        );
+        currentColumn.tasks = newTaskList;
+      } else {
+        // delete task from prev list(column)
+        const currentTaskList = currentBoard.columns[listIndex].tasks;
+        currentTaskList.splice(taskIndex, 1);
+
+        const wantedTasksList = currentBoard.columns.find(
+          (column) => column.status === updatedtask.status
+        );
+        wantedTasksList.tasks.push(updatedtask);
+        console.log("here");
+      }
+
+      updateBoard(currentBoard);
+      return boardsHelper;
+    });
+
+    setShowUpdateTaskModal(false);
   };
-
   const onChangeHandler = (e, index) => {
     setSubTasksInput((prev) => {
       const { name, value } = e.target;
@@ -42,30 +88,12 @@ export function AddTaskModal({ boardName, setShowAddTaskModal }) {
     });
   };
 
-  const onSubmitHandler = () => {
-    const task = {
-      id: uuidv4(),
-      title,
-      description,
-      status,
-      subTasks: subTasksInput.filter(({ subTask }) => subTask.trim() !== ""),
-    };
-
-    setBoards((prev) => {
-      const boardsHelper = [...prev];
-      const currentBoard = boardsHelper.find(
-        (board) => board.title === boardName
-      );
-      const tasksList = currentBoard.columns.find(
-        (column) => column.status === status
-      )?.tasks;
-      tasksList.push(task);
-      updateBoard(currentBoard);
-      return boardsHelper;
-    });
-    setShowAddTaskModal(false);
+  const addSubTaskHandler = () => {
+    setSubTasksInput((prev) => [
+      ...prev,
+      { id: uuidv4(), subTask: "", isDone: false },
+    ]);
   };
-
   return (
     <motion.div
       initial={{ scale: 0 }}
@@ -76,7 +104,7 @@ export function AddTaskModal({ boardName, setShowAddTaskModal }) {
       }}
     >
       {/* Head */}
-      <h1 className="dark:text-white font-bold">Add New Task</h1>
+      <h1 className="dark:text-white font-bold">Update Task</h1>
       <form
         className="flex flex-col gap-2"
         onSubmit={(e) => {
@@ -159,11 +187,11 @@ export function AddTaskModal({ boardName, setShowAddTaskModal }) {
           type={"submit"}
           className="w-full bg-[#6166ca] text-white font-bold text-sm rounded-full py-2"
         >
-          Create Task
+          Save Changes
         </button>
       </form>
     </motion.div>
   );
 }
 
-export default AddTaskModal;
+export default UpdateTaskModal;

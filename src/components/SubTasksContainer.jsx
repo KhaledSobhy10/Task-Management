@@ -17,6 +17,7 @@ function SubTasksContainer({ subTasks, parentTaskIndex, listIndex }) {
                 parentTaskIndex={parentTaskIndex}
                 subTaskIndex={index}
                 listIndex={listIndex}
+                key={subTask.id}
               />
             ))}
           </div>

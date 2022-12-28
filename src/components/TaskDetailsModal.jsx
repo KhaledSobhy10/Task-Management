@@ -5,7 +5,12 @@ import { useParams } from "react-router-dom";
 import { updateBoard } from "../data/local-storage/boards";
 import DropdownMenu from "./DropdowMenu";
 import ConfirmModal from "./ConfirmModal";
+import ModalContainer from "./ModalContainer";
+import UpdateTaskModal from "./UpdateTaskModal";
+
+import { motion } from "framer-motion";
 function TaskDetailsModal({
+  id,
   title,
   description,
   status,
@@ -84,7 +89,11 @@ function TaskDetailsModal({
       onClick={hideDetailsModalHandler}
     >
       {/* Modal Content */}
-      <div className="md:w-1/3  w-[90%] min-h-fit max-h-full sm:p-6 p-2 bg-white shadow dark:bg-[#272835] z-50 flex flex-col gap-4 rounded-lg">
+      <motion.div
+        initial={{ scale: 0 }}
+        whileInView={{ scale: 1 }}
+        className="lg:w-1/3  w-[90%] min-h-fit max-h-full sm:p-6 p-2 bg-white shadow dark:bg-[#272835] z-50 flex flex-col gap-4 rounded-lg"
+      >
         {/* Head */}
         {showConfirmModal && (
           <ConfirmModal
@@ -97,6 +106,17 @@ function TaskDetailsModal({
           />
         )}
 
+        {showUpdateModal && (
+          <ModalContainer setShoModal={setShowUpdateModal}>
+            <UpdateTaskModal
+              task={{ title, description, status, subTasks, id }}
+              taskIndex={taskIndex}
+              listIndex={listIndex}
+              boardName={boardName}
+              setShowUpdateTaskModal={setShowUpdateModal}
+            />
+          </ModalContainer>
+        )}
         <div className="flex justify-between">
           <strong className="dark:text-white text-xl break-words">
             {title}
@@ -132,7 +152,7 @@ function TaskDetailsModal({
             ))}
           </select>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

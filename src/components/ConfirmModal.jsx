@@ -1,5 +1,5 @@
 import ModalContainer from "./ModalContainer";
-
+import { motion } from "framer-motion";
 function ConfirmModal({
   message,
   hideModalHandler,
@@ -8,7 +8,11 @@ function ConfirmModal({
 }) {
   return (
     <ModalContainer setShoModal={hideModalHandler}>
-      <div className="w-fit min-h-fit max-h-full p-8 bg-white shadow dark:bg-[#272835] z-50 flex flex-col gap-8 rounded-lg text-center">
+      <motion.div
+        initial={{ scale: 0 }}
+        whileInView={{ scale: 1 }}
+        className="w-fit min-h-fit max-h-full p-8 bg-white shadow dark:bg-[#272835] z-50 flex flex-col gap-8 rounded-lg text-center"
+      >
         <div className="text-white text-xl">{message}</div>
         <div className="flex  justify-center gap-4">
           <button
@@ -24,7 +28,7 @@ function ConfirmModal({
             Cancel
           </button>
         </div>
-      </div>
+      </motion.div>
     </ModalContainer>
   );
 }

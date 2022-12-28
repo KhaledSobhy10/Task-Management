@@ -1,5 +1,6 @@
 import Task from "./Task";
 import { Droppable } from "react-beautiful-dnd";
+import { motion } from "framer-motion";
 
 function TaskList({ status, tasks, bulletColor, listIndex, boardId }) {
   return (
@@ -13,13 +14,15 @@ function TaskList({ status, tasks, bulletColor, listIndex, boardId }) {
       </div>
       <Droppable droppableId={`${listIndex}`}>
         {(provided) => (
-          <div
+          <motion.div
             className="flex flex-col gap-2 min-w-full min-h-full  max-w-fit overflow-y-auto  px-2 py-1 "
             {...provided.droppableProps}
             ref={provided.innerRef}
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
           >
             {tasks &&
-              tasks.map(({ title, description, subTasks }, index) => (
+              tasks.map(({ title, description, subTasks, id }, index) => (
                 <Task
                   listIndex={listIndex}
                   taskIndex={index}
@@ -27,11 +30,12 @@ function TaskList({ status, tasks, bulletColor, listIndex, boardId }) {
                   subTasks={subTasks}
                   title={title}
                   description={description}
-                  key={title}
+                  key={id}
+                  id={id}
                 />
               ))}
             {provided.placeholder}
-          </div>
+          </motion.div>
         )}
       </Droppable>
     </div>
