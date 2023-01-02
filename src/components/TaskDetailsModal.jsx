@@ -3,12 +3,12 @@ import SubTasksContainer from "./SubTasksContainer";
 import { BoardsContext } from "../context/BoardsContext";
 import { useParams } from "react-router-dom";
 import { updateBoard } from "../data/local-storage/boards";
-import DropdownMenu from "./DropdowMenu";
 import ConfirmModal from "./ConfirmModal";
 import ModalContainer from "./ModalContainer";
 import UpdateTaskModal from "./UpdateTaskModal";
 
 import { motion } from "framer-motion";
+import AccMenu from "./AccMenu";
 function TaskDetailsModal({
   id,
   title,
@@ -121,7 +121,7 @@ function TaskDetailsModal({
           <strong className="dark:text-white text-xl break-words">
             {title}
           </strong>
-          <DropdownMenu options={OPTIONS} />
+          <AccMenu options={OPTIONS} />
         </div>
         {/* Body */}
         <p className="text-sm break-words">
