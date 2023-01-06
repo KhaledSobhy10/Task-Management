@@ -23,6 +23,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "live" :"pm2 serve ./build --port 3001 --name \"task-mang\" --spa",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
