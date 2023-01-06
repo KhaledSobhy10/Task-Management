@@ -1,8 +1,8 @@
 import { useState, useContext } from "react";
 import AddTaskModal from "./AddTaskModal";
-import DropdownMenu from "./DropdowMenu";
 import { removeBoardByTitle } from "../data/local-storage/boards";
 import { BoardsContext } from "../context/BoardsContext";
+import AccMenu from "./AccMenu";
 function ActionBar({ boardName, addNewTaskHandler, showSideBarHandler }) {
   const { setBoards, reloadBoards } = useContext(BoardsContext);
   const [showAddTaskModal, setShowAddTaskModal] = useState(false);
@@ -64,7 +64,8 @@ function ActionBar({ boardName, addNewTaskHandler, showSideBarHandler }) {
           >
             +Add New Task
           </button>
-          <DropdownMenu options={OPTIONS} />
+          {/* <DropdownMenu options={OPTIONS} /> */}
+          <AccMenu options={OPTIONS} />
           {showAddTaskModal && (
             <div
               className={`absolute top-0 left-0 h-full w-full  flex justify-center items-center z-40 bg-black/75`}
