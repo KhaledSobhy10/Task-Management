@@ -12,9 +12,7 @@ function SideBar({ currentBoardName, showBar, showSideBarHandler }) {
   // absolute top-[50px] left-0 w-full
   return (
     <div
-      className={`${
-        showBar ? "" : "hidden"
-      }  h-[calc(100%-50px)]  w-fit  bg-black/30 border-r-2 dark:border-r-0`}
+      className={`h-[calc(100%-50px)]  w-fit  bg-black/30 border-r-2 dark:border-r-0`}
       onClick={(e) => {
         if (e.target === e.currentTarget) {
           showSideBarHandler(false);

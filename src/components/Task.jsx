@@ -26,19 +26,19 @@ function Task({
     <Draggable key={title} draggableId={title} index={taskIndex}>
       {(provided) => (
         <div
-          className="capitalize transition-colors duration-300 h-fit min-w-fit w-[250px] shadow-xl border dark:border-transparent  dark:bg-[#272835]  rounded  p-4 flex flex-col gap-2 justify-center font-bold hover:cursor-pointer "
+          className="capitalize transition-colors duration-300 h-fit  w-full shadow-xl border dark:border-transparent  dark:bg-[#272835]  rounded-xl  p-4 flex flex-col gap-2 justify-center font-bold hover:cursor-pointer "
           onClick={showDetailsModalHandler}
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
         >
           <span
-            className="dark:text-white text-base text-black "
+            className="dark:text-white text-base text-black overflow-hidden overflow-ellipsis"
             onClick={showDetailsModalHandler}
           >
             {title}
           </span>
-          <span className="text-sm font-normal">
+          <span className="text-sm font-normal overflow-hidden overflow-ellipsis">
             {getSubTasksDoneMessage(subTasks)}
           </span>
           {showDetails && (

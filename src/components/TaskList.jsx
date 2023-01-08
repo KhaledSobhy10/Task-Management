@@ -15,7 +15,7 @@ function TaskList({ status, tasks, bulletColor, listIndex, boardId }) {
       <Droppable droppableId={`${listIndex}`}>
         {(provided) => (
           <motion.div
-            className="flex flex-col gap-2 min-w-full min-h-full  max-w-fit overflow-y-auto  px-2 py-1 "
+            className="flex flex-col gap-2 min-w-full min-h-[90px]  max-w-fit overflow-y-auto  px-2 py-1"
             {...provided.droppableProps}
             ref={provided.innerRef}
             initial={{ scale: 0 }}

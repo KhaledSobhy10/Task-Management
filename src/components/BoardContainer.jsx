@@ -53,7 +53,7 @@ function BoardContainer({ boardId, boardTasks, showSideBar }) {
   };
   return (
     <div
-      className={`transition flex ${
+      className={` transition-width duration-75 ease flex ${
         showSideBar ? "w-[calc(100vw-350px)]" : "w-screen"
       }`}
     >

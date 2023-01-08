@@ -118,7 +118,7 @@ function TaskDetailsModal({
           </ModalContainer>
         )}
         <div className="flex justify-between">
-          <strong className="dark:text-white text-xl break-words">
+          <strong className="dark:text-white text-xl w-full  break-words">
             {title}
           </strong>
           <AccMenu options={OPTIONS} />

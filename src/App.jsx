@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Boards from "./pages/Boards";
 
 import BoardsContextProvider from "./context/BoardsContext";
+import { Transition } from "@headlessui/react";
 
 function App() {
   const [currentBoardName, setCurrentBoardName] = useState();
@@ -22,11 +23,21 @@ function App() {
             showSideBarHandler={setShowSideBar}
           />
           <div className="flex w-full overflow-hidden">
-            <SideBar
-              showBar={showSideBar}
-              showSideBarHandler={setShowSideBar}
-              currentBoardName={currentBoardName}
-            />
+            <Transition
+              show={showSideBar}
+              enter="transition-margin duration-100 ease-out"
+              enterFrom="-ml-80"
+              enterTo="ml-0"
+              leave="transition-margin duration-100 ease-out"
+              leaveFrom="ml-0"
+              leaveTo="-ml-80"
+            >
+              <SideBar
+                showBar={showSideBar}
+                showSideBarHandler={setShowSideBar}
+                currentBoardName={currentBoardName}
+              />
+            </Transition>
             <div>
               <Routes>
                 <Route
