@@ -3,11 +3,14 @@ import AddTaskModal from "./AddTaskModal";
 import { removeBoardByTitle } from "../data/local-storage/boards";
 import { BoardsContext } from "../context/BoardsContext";
 import AccMenu from "./AccMenu";
+import ConfirmModal from "./ConfirmModal";
 function ActionBar({ boardName, addNewTaskHandler, showSideBarHandler }) {
   const { setBoards, reloadBoards } = useContext(BoardsContext);
   const [showAddTaskModal, setShowAddTaskModal] = useState(false);
+  const [showConfirmDialog, setShowConfirmDialog] = useState(false);
 
   const deleteBoard = () => {
+    setShowConfirmDialog(false);
     setBoards(removeBoardByTitle(boardName));
     reloadBoards();
   };
@@ -24,13 +27,21 @@ function ActionBar({ boardName, addNewTaskHandler, showSideBarHandler }) {
     {
       title: "Delete",
       extraStyle: " text-pink-700 ",
-      selectedHandler: deleteBoard,
+      selectedHandler: () => setShowConfirmDialog(true),
     },
   ];
 
   return (
     <div className="transition-colors  duration-300 min-w-fit w-full h-[50px]  sm:px-4 px-2 py-2 bg-white dark:bg-[#272835] dark:text-white text-black flex gap-4 items-center shadow">
       <>
+        {showConfirmDialog && (
+          <ConfirmModal
+            message={"Want delete board ??"}
+            hideModalHandler={showConfirmDialog}
+            confirmedResponseHandler={deleteBoard}
+            unconfirmedResponseHandler={() => setShowConfirmDialog(false)}
+          />
+        )}
         <button
           className="flex justify-center items-center p-2 "
           onClick={() => {

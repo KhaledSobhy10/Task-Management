@@ -6,6 +6,15 @@ function ConfirmModal({
   confirmedResponseHandler,
   unconfirmedResponseHandler,
 }) {
+
+  const yesBtnHandler = () => {
+    confirmedResponseHandler();
+    hideModalHandler(true);
+  };
+  const noBtnHandler = () => {
+    unconfirmedResponseHandler();
+    hideModalHandler(true);
+  };
   return (
     <ModalContainer setShoModal={hideModalHandler}>
       <motion.div
@@ -13,17 +22,17 @@ function ConfirmModal({
         whileInView={{ scale: 1 }}
         className="w-fit min-h-fit max-h-full p-8 bg-white shadow dark:bg-[#272835] z-50 flex flex-col gap-8 rounded-lg text-center"
       >
-        <div className="dark:text-white text-xl">{message}</div>
+        <div className="dark:text-white text-xl capitalize">{message}</div>
         <div className="flex  justify-center gap-4">
           <button
             className="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded active:scale-110  transition-transform"
-            onClick={confirmedResponseHandler}
+            onClick={yesBtnHandler}
           >
             Yes
           </button>
           <button
             className="bg-pink-600 hover:bg-pink-700 text-white py-2 px-4 rounded active:scale-110 transition-transform"
-            onClick={unconfirmedResponseHandler}
+            onClick={noBtnHandler}
           >
             Cancel
           </button>
