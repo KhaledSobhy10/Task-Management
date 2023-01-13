@@ -112,35 +112,38 @@ function UpdateTaskModal({
           onSubmitHandler();
         }}
       >
-        <label className="text-sm font-bold flex flex-col gap-1">
+        <label className="text-sm font-bold flex flex-col gap-1 dark:text-white ">
           Title
           <input
             required
             type={"text"}
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="font-normal dark:text-white text-sm dark:bg-[#272835] outline-none ring-1 ring-gray-600 rounded px-1 py-2 "
+            className="font-normal text-sm dark:bg-[#272835] outline-none ring-1 ring-gray-600 rounded px-1 py-2 "
             placeholder="e.g Take coffee break"
           />
         </label>
-        <label className="text-sm font-bold flex flex-col gap-2">
+        <label className="text-sm dark:text-white  font-bold flex flex-col gap-2">
           Description
           <textarea
             type={"text"}
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="font-normal dark:text-white text-sm dark:bg-[#272835] outline-none ring-1 ring-gray-600 rounded px-1 py-2 min-h-fit max-h-[120px]"
+            className="font-normal text-sm dark:bg-[#272835] outline-none ring-1 ring-gray-600 rounded px-1 py-2 min-h-fit max-h-[120px]"
             placeholder="e.g Take coffee break"
           />
         </label>
-        <div className=" text-sm font-bold ">
+        <div className=" text-sm font-bold dark:text-white  ">
           Subtasks
           <div className="flex flex-col gap-2 max-h-[100px] overflow-y-auto">
             {subTasksInput.map(({ subTask }, index) => (
-              <div className="flex gap-2 items-center m-1" key={index}>
+              <div
+                className="flex gap-2 items-center m-1 dark:text-white "
+                key={index}
+              >
                 <input
                   type={"text"}
-                  className=" font-normal grow dark:text-white text-sm dark:bg-[#272835] outline-none ring-1 ring-gray-600 rounded px-1 py-2 "
+                  className=" font-normal grow text-sm dark:bg-[#272835] outline-none ring-1 ring-gray-600 rounded px-1 py-2 "
                   name="subTask"
                   value={subTask}
                   onChange={(e) => onChangeHandler(e, index)}

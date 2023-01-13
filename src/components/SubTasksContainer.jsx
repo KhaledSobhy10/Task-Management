@@ -5,7 +5,7 @@ import SubTask from "./SubTask";
 function SubTasksContainer({ subTasks, parentTaskIndex, listIndex }) {
   return (
     <>
-      {subTasks ? (
+      {subTasks && subTasks.length ? (
         <div className="flex flex-col gap-2">
           <h2 className="dark:text-white">
             {getSubTasksDoneMessage2(subTasks)}
@@ -24,10 +24,7 @@ function SubTasksContainer({ subTasks, parentTaskIndex, listIndex }) {
         </div>
       ) : (
         <div className="text-pink-500 text-xs font-normal">
-          No SubTasks found!{" "}
-          <button className="bg-[#6166ca] text-xs text-white px-2 py-1 rounded">
-            Add
-          </button>
+          No SubTasks found!
         </div>
       )}
     </>

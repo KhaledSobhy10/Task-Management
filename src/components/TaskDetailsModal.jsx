@@ -74,7 +74,7 @@ function TaskDetailsModal({
   const OPTIONS = [
     {
       title: "Update",
-      extraStyle: " text-blue-700 ",
+      extraStyle: " text-blue-700 dark:text-blue-300 ",
       selectedHandler: updateTaskHandler,
     },
     {
@@ -94,7 +94,6 @@ function TaskDetailsModal({
         whileInView={{ scale: 1 }}
         className=" text-black lg:w-1/3  w-[90%] min-h-fit max-h-full sm:p-6 p-2 bg-white shadow dark:bg-[#272835] z-50 flex flex-col gap-4 rounded-lg"
       >
-        {/* Head */}
         {showConfirmModal && (
           <ConfirmModal
             message="Want delete a task ?"
@@ -103,6 +102,7 @@ function TaskDetailsModal({
             unconfirmedResponseHandler={() => {}}
           />
         )}
+        {/* Head */}
 
         {showUpdateModal && (
           <ModalContainer setShoModal={setShowUpdateModal}>
@@ -122,9 +122,9 @@ function TaskDetailsModal({
           <AccMenu options={OPTIONS} />
         </div>
         {/* Body */}
-        <p className="text-sm break-words">
+        <p className="text-sm break-words text-blue-500">
           {description || (
-            <span className="text-blue-500 text-xs">No Description Found</span>
+            <span className="text-pink-500 text-xs">No Description Found</span>
           )}
         </p>
         <SubTasksContainer
