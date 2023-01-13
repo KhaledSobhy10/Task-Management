@@ -92,7 +92,7 @@ function TaskDetailsModal({
       <motion.div
         initial={{ scale: 0 }}
         whileInView={{ scale: 1 }}
-        className="lg:w-1/3  w-[90%] min-h-fit max-h-full sm:p-6 p-2 bg-white shadow dark:bg-[#272835] z-50 flex flex-col gap-4 rounded-lg"
+        className=" text-black lg:w-1/3  w-[90%] min-h-fit max-h-full sm:p-6 p-2 bg-white shadow dark:bg-[#272835] z-50 flex flex-col gap-4 rounded-lg"
       >
         {/* Head */}
         {showConfirmModal && (
@@ -100,9 +100,7 @@ function TaskDetailsModal({
             message="Want delete a task ?"
             hideModalHandler={setShowConfirmModal}
             confirmedResponseHandler={deleteTask}
-            unconfirmedResponseHandler={() => {
-              console.log("cancel");
-            }}
+            unconfirmedResponseHandler={() => {}}
           />
         )}
 
@@ -117,8 +115,8 @@ function TaskDetailsModal({
             />
           </ModalContainer>
         )}
-        <div className="flex justify-between">
-          <strong className="dark:text-white text-xl w-full  break-words">
+        <div className="flex justify-between text-black">
+          <strong className=" dark:text-white text-xl w-full  break-words">
             {title}
           </strong>
           <AccMenu options={OPTIONS} />

@@ -4,15 +4,13 @@ import { Fragment } from "react";
 export default function AccMenu({ options }) {
   return (
     <Menu as="div" className="relative inline-block text-left">
-      <div>
-        <Menu.Button className="w-4 dark:fill-white">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-            <circle cx="256" cy="256" r="48" />
-            <circle cx="256" cy="416" r="48" />
-            <circle cx="256" cy="96" r="48" />
-          </svg>
-        </Menu.Button>
-      </div>
+      <Menu.Button className="md:w-9 md:p-2 w-6 p-1 dark:fill-white rounded-full hover:bg-[#6166ca] hover:fill-white transition-colors	duration-200">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <circle cx="256" cy="256" r="48" />
+          <circle cx="256" cy="416" r="48" />
+          <circle cx="256" cy="96" r="48" />
+        </svg>
+      </Menu.Button>
       <Transition
         as={Fragment}
         enter="transition ease-out duration-100"
@@ -24,7 +22,7 @@ export default function AccMenu({ options }) {
       >
         <Menu.Items className="absolute right-0 mt-2 w-40 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none p-1">
           {options.map(({ title, extraStyle, selectedHandler }) => (
-            <Menu.Item>
+            <Menu.Item key={title}>
               {({ active }) => (
                 <button
                   className={`${

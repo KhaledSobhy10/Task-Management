@@ -20,6 +20,8 @@ function Task({
   const showDetailsModalHandler = (e) => {
     e.stopPropagation();
     setShowDetails(true);
+    console.log("herer");
+
   };
 
   return (
@@ -43,6 +45,7 @@ function Task({
           </span>
           {showDetails && (
             <TaskDetailsModal
+              key={id}
               taskIndex={taskIndex}
               listIndex={listIndex}
               title={title}

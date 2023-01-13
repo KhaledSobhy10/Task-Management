@@ -9,7 +9,7 @@ import {
 import { BoardsContext } from "../context/BoardsContext";
 import { updateColumnsOfBoard } from "../data/local-storage/boards";
 
-function BoardContainer({ boardId, boardTasks, showSideBar }) {
+function BoardContainer({ boardName, boardId, boardTasks, showSideBar }) {
   const { setBoards } = useContext(BoardsContext);
   // const data = arrayOfObjectsFromMap(groupBy(boardTasks.tasks, "status"));
   console.log("data", boardTasks);
@@ -54,15 +54,15 @@ function BoardContainer({ boardId, boardTasks, showSideBar }) {
   return (
     <div
       className={` transition-width duration-75 ease flex ${
-        showSideBar ? "w-[calc(100vw-350px)]" : "w-screen"
-      }`}
+        showSideBar ? "w-[calc(100vw-350px)] " : "w-screen"
+      } flex-wrap h-[95%] overflow-y-auto`}
     >
       <DragDropContext onDragEnd={handleOnDragEnd}>
-        <div className="p-4 grid grid-cols-mainGrid  gap-2 h-[calc(100vh-50px)] overflow-x-auto w-11/12	 ">
+        <div className="p-4 grid grid-cols-mainGrid  gap-2  w-11/12	 ">
           {boardTasks.map(({ status, tasks, bulletColor }, index) => (
             <TaskList
               listIndex={index}
-              key={status}
+              key={status + index}
               status={status}
               tasks={tasks}
               bulletColor={bulletColor}
@@ -73,7 +73,7 @@ function BoardContainer({ boardId, boardTasks, showSideBar }) {
       </DragDropContext>
 
       <button
-        className="w-fit flex justify-center items-center p-2 m-2 rounded border-2 dark:border-0 shadow-lg  dark:text-white  dark:bg-[#272835]"
+        className="w-fit h-fit flex justify-center items-center p-2 m-2 rounded border-2 dark:border-0 shadow-lg  dark:text-white "
         onClick={handleAddNewColumn}
       >
         + New Column

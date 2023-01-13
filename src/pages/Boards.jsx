@@ -15,9 +15,10 @@ function Boards({ currentBoardNameHandler, showSideBarHandler, showSideBar }) {
     setBoard(() => boards.find((board) => board.title === boardName));
   }, [boardName, boards]);
   return (
-    <main className="h-[calc(100vh-50px)]">
+    <main className=" h-full overflow-scroll">
       {(board && (
         <BoardContainer
+          boardName={boardName}
           boardTasks={board.columns}
           boardId={board.id}
           showSideBar={showSideBar}

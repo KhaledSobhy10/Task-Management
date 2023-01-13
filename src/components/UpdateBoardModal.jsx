@@ -1,27 +1,30 @@
 import React, { useState, useContext } from "react";
-import { v4 as uuidv4 } from "uuid";
 
-import { createBoard } from "../data/local-storage/boards";
+import { updateBoard } from "../data/local-storage/boards";
 import { BoardsContext } from "../context/BoardsContext";
 import { useNavigate } from "react-router-dom";
-import { getRandomColor } from "../utility/status-color-generator";
 
-function AddBoardModal({ setShowAddBoardModal }) {
+function UpdateBoardModal({
+  boardId,
+  boardName,
+  boardColumnsWithTasks,
+  setShowUpdateBoardModal,
+}) {
   const navigate = useNavigate();
-  const { setBoards } = useContext(BoardsContext);
-  const [title, setTitle] = useState("");
+  const { setBoards, boards } = useContext(BoardsContext);
+  const [title, setTitle] = useState(boardName);
 
   const [columnsInput, setColumnsInput] = useState([
-    { taskTitle: "todo", bulletColor: "#cc6699" },
-    { taskTitle: "doing", bulletColor: "#0084ff" },
+    { columnTitle: "todo", bulletColor: "#cc6699" },
+    { columnTitle: "doing", bulletColor: "#0084ff" },
   ]);
 
   const addColumnHandler = () => {
     setColumnsInput((prev) => [
       ...prev,
       {
-        taskTitle: "",
-        bulletColor: getRandomColor(),
+        columnTitle: "",
+        bulletColor: "#000000",
       },
     ]);
   };
@@ -43,13 +46,13 @@ function AddBoardModal({ setShowAddBoardModal }) {
     e.preventDefault();
     // build board
     const board = {
-      id: uuidv4(),
+      id: boardId,
       title,
       columns: columnsInput
-        .filter((item) => item.taskTitle !== "")
+        .filter((item) => item.columnTitle !== "")
         .map((column) => {
           return {
-            status: column.taskTitle,
+            status: column.columnTitle,
             bulletColor: column.bulletColor,
             tasks: [],
           };
@@ -57,11 +60,13 @@ function AddBoardModal({ setShowAddBoardModal }) {
     };
     console.log(board);
     // add to local storage
-    createBoard(board);
+    updateBoard(board);
     // add new board to context
-    setBoards((prevBoards) => [...prevBoards, board]);
+    setBoards((prevBoards) =>
+      prevBoards.map((item) => (item.id === board.id ? board : item))
+    );
 
-    setShowAddBoardModal(false);
+    setShowUpdateBoardModal(false);
     navigate(`/boards/${title}`);
   };
   return (
@@ -70,7 +75,7 @@ function AddBoardModal({ setShowAddBoardModal }) {
       onClick={(e) => e.stopPropagation()}
     >
       {/* Head */}
-      <h1 className="dark:text-white font-bold">Add New Board</h1>
+      <h1 className="dark:text-white font-bold">Update Board</h1>
       <form className="flex flex-col gap-4" onSubmit={onSubmitHandler}>
         <label className="dark:text-white text-sm font-bold flex flex-col gap-2">
           Board Name
@@ -88,14 +93,14 @@ function AddBoardModal({ setShowAddBoardModal }) {
         <div className="dark:text-white text-sm font-bold ">
           Board Columns
           <div className="flex flex-col gap-2 max-h-[100px] overflow-y-auto">
-            {columnsInput.map(({ taskTitle, bulletColor }, index) => (
+            {columnsInput.map(({ columnTitle, bulletColor }, index) => (
               <div className="flex gap-2 items-center m-1" key={index}>
                 <div className="flex justify-between gap-2	 font-normal grow dark:text-white text-sm dark:bg-[#272835] outline-none ring-1 ring-gray-600 rounded px-1 py-2 ">
                   <input
                     type={"text"}
-                    name={"taskTitle"}
+                    name={"columnTitle"}
                     className=" font-normal grow dark:text-white text-sm dark:bg-[#272835] outline-none"
-                    value={taskTitle}
+                    value={columnTitle}
                     placeholder="Ex: Working"
                     onChange={(e) => onChangeHandler(e, index)}
                     maxLength={25}
@@ -110,7 +115,7 @@ function AddBoardModal({ setShowAddBoardModal }) {
                   />
                 </div>
 
-                <button onClick={() => removeColumnInput(taskTitle)}>
+                <button onClick={() => removeColumnInput(columnTitle)}>
                   {"X"}
                 </button>
               </div>
@@ -130,11 +135,11 @@ function AddBoardModal({ setShowAddBoardModal }) {
           className="w-full bg-[#6166ca] text-white font-bold text-sm rounded-full py-2"
           type="submit"
         >
-          Create Board
+          Save Changes
         </button>
       </form>
     </div>
   );
 }
 
-export default AddBoardModal;
+export default UpdateBoardModal;

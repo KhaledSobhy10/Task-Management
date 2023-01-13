@@ -12,7 +12,7 @@ function SideBar({ currentBoardName, showBar, showSideBarHandler }) {
   // absolute top-[50px] left-0 w-full
   return (
     <div
-      className={`h-[calc(100%-50px)]  w-fit  bg-black/30 border-r-2 dark:border-r-0`}
+      className={`h-[calc(100%-50px)] w-fit bg-black/30 border border-gray-300  dark:border-gray-900`}
       onClick={(e) => {
         if (e.target === e.currentTarget) {
           showSideBarHandler(false);
@@ -21,7 +21,7 @@ function SideBar({ currentBoardName, showBar, showSideBarHandler }) {
       }}
     >
       <aside
-        className={`h-[calc(100vh-50px)] z-10  p-2 w-[330px] transition-colors duration-300  dark:border-gray-700 bg-white dark:bg-[#272835] dark:text-white text-black flex flex-col  items-start gap-2`}
+        className={`h-[calc(100vh-50px)] z-20  p-2 md:w-[330px] w-screen sm:relative absolute left-0  transition-colors duration-300  dark:border-gray-700 bg-white dark:bg-[#272835] dark:text-white text-black flex flex-col  items-start gap-2`}
       >
         <div className="px-4 text-gray-500 text-sm">{`ALL BOARDS (${boardsTitle.length})`}</div>
         <div className="flex flex-col gap-2 w-full items-start grow overflow-y-auto">

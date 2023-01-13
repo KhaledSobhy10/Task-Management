@@ -73,7 +73,7 @@ function ActionBar({ boardName, addNewTaskHandler, showSideBarHandler }) {
               setShowAddTaskModal(true);
             }}
           >
-            +Add New Task
+            + <span className="md:inline hidden">Add New Task</span>
           </button>
           {/* <DropdownMenu options={OPTIONS} /> */}
           <AccMenu options={OPTIONS} />

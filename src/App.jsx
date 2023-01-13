@@ -17,12 +17,12 @@ function App() {
   return (
     <BrowserRouter>
       <BoardsContextProvider>
-        <div className="relative  w-screen  bg-white dark:bg-[#1b1c29] transition-colors  duration-300 ">
+        <div className="relative h-screen w-full overflow-hidden bg-white dark:bg-[#1b1c29] transition-colors  duration-300 ">
           <ActionBar
             boardName={currentBoardName}
             showSideBarHandler={setShowSideBar}
           />
-          <div className="flex w-full overflow-hidden">
+          <div className="flex w-full h-full ">
             <Transition
               show={showSideBar}
               enter="transition-margin duration-100 ease-out"

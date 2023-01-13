@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import ModalContainer from "./ModalContainer";
 import { BoardsContext } from "../context/BoardsContext";
 import { getBoard, updateBoard } from "../data/local-storage/boards";
+import { getRandomColor } from "../utility/status-color-generator";
 
 function AddColumnModal({
   addColumnModalHandler,
@@ -11,7 +12,7 @@ function AddColumnModal({
   const { reloadBoards } = useContext(BoardsContext);
   const [columnData, setColumnData] = useState({
     columnTitle: "",
-    bulletColor: "#000000",
+    bulletColor: getRandomColor(),
   });
 
   const onChangeHandler = (e) => {
