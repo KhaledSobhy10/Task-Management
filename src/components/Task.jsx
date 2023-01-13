@@ -28,7 +28,7 @@ function Task({
     <Draggable key={title} draggableId={title} index={taskIndex}>
       {(provided) => (
         <div
-          className="capitalize transition-colors duration-300 h-fit  w-full shadow-xl border dark:border-transparent  dark:bg-[#272835]  rounded-xl  p-4 flex flex-col gap-2 justify-center font-bold hover:cursor-pointer "
+          className="capitalize transition-colors duration-300 h-fit  w-full shadow-card border dark:border-transparent  dark:bg-[#272835]  rounded-xl  p-4 flex flex-col gap-2 justify-center font-bold hover:cursor-pointer "
           onClick={showDetailsModalHandler}
           ref={provided.innerRef}
           {...provided.draggableProps}

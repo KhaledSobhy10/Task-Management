@@ -73,10 +73,11 @@ function BoardContainer({ boardName, boardId, boardTasks, showSideBar }) {
       </DragDropContext>
 
       <button
-        className="w-fit h-fit flex justify-center items-center p-2 m-2 rounded border-2 dark:border-0 shadow-lg  dark:text-white "
+        className="fixed bottom-5 sm:right-10 right-5 sm:w-fit sm:h-fit w-4 h-4 flex justify-center items-center sm:py-1  p-4  ring-1 dark:ring-2 ring-gray-400 dark:ring-[#6166ca]	 shadow-xl dark:text-white sm:rounded-2 rounded-full"
         onClick={handleAddNewColumn}
+        title="Add new column "
       >
-        + New Column
+        + <span className="sm:block hidden">New Column</span>
       </button>
       {showAddNewColumnModal && (
         <AddColumnModal

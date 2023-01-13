@@ -21,7 +21,7 @@ function ActionBar({ boardName, addNewTaskHandler, showSideBarHandler }) {
   const OPTIONS = [
     {
       title: "Update",
-      extraStyle: " text-blue-700 ",
+      extraStyle: " text-blue-700 dark:text-blue-300",
       selectedHandler: updateBoard,
     },
     {
@@ -72,6 +72,7 @@ function ActionBar({ boardName, addNewTaskHandler, showSideBarHandler }) {
             onClick={() => {
               setShowAddTaskModal(true);
             }}
+            title="add new task"
           >
             + <span className="md:inline hidden">Add New Task</span>
           </button>
