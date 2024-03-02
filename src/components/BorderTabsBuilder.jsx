@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import BoardTab from "./BoardTab";
-import { useParams } from "react-router-dom";
 
 function BorderTabsBuilder({ tabsTitles, currentBoardName }) {
   return tabsTitles.map((title, index) => (
